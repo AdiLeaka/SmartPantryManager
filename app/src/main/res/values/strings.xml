@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Pantry Manager</string>
+
+    <!-- Screen titles -->
+    <string name="title_pantry">My Pantry</string>
+    <string name="title_suggested">Suggested Recipes</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_add">Add Ingredient</string>
+    <string name="title_edit">Edit Ingredient</string>
+    <string name="title_recipe">Recipe</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_pantry">Pantry</string>
+    <string name="nav_recipes">Recipes</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Pantry list -->
+    <string name="pantry_empty">Your pantry is empty. Tap + to add your first ingredient.</string>
+    <string name="fab_add">Add ingredient</string>
+    <string name="cd_edit">Edit</string>
+    <string name="cd_delete">Delete</string>
+    <string name="item_expires">Expires: %1$s</string>
+    <string name="item_expired">Expired on %1$s</string>
+    <string name="item_expiring_soon">Expires %1$s (soon)</string>
+    <string name="banner_expiring">%1$d item(s) expired or expiring within 3 days</string>
+
+    <!-- Add / edit form -->
+    <string name="hint_name">Ingredient name</string>
+    <string name="hint_qty">Quantity</string>
+    <string name="label_unit">Unit</string>
+    <string name="hint_expiry">Expiry date (optional)</string>
+    <string name="btn_clear_expiry">Clear expiry date</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_delete">Delete ingredient</string>
+    <string name="err_name_required">Please enter an ingredient name</string>
+    <string name="err_name_invalid">Use letters only (spaces and hyphens allowed), at least 2 characters</string>
+    <string name="err_qty_required">Please enter a quantity</string>
+    <string name="err_qty_invalid">Enter a valid number</string>
+    <string name="err_qty_positive">Quantity must be greater than 0</string>
+    <string name="err_qty_large">Quantity is too large (max 100000)</string>
+    <string name="toast_added">Ingredient added</string>
+    <string name="toast_updated">Ingredient updated</string>
+    <string name="toast_deleted">Ingredient deleted</string>
+    <string name="toast_pantry_cleared">Pantry cleared</string>
+    <string name="toast_not_found">That ingredient no longer exists</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_delete_title">Delete ingredient?</string>
+    <string name="dialog_delete_message">Remove %1$s from your pantry?</string>
+    <string name="btn_yes_delete">Delete</string>
+    <string name="btn_cancel">Cancel</string>
+
+    <!-- Suggested recipes -->
+    <string name="btn_ready">Ready to cook</string>
+    <string name="btn_almost">Almost there</string>
+    <string name="info_ready">Recipes you can cook right now using only what is in your pantry (%1$d).</string>
+    <string name="info_almost">Missing exactly one ingredient. These are NOT part of your main suggestions (%1$d).</string>
+    <string name="empty_suggestions">No recipes match your pantry yet - add more ingredients</string>
+    <string name="empty_almost">No recipes are just one ingredient away right now.</string>
+    <string name="recipe_ready_info">%1$d ingredients - ready to cook</string>
+    <string name="recipe_missing_info">Missing: %1$s</string>
+
+    <!-- Recipe detail -->
+    <string name="detail_ingredients">Ingredients</string>
+    <string name="detail_method">Method</string>
+    <string name="detail_ready">You have everything you need for this recipe.</string>
+    <string name="detail_missing">Missing %1$d ingredient(s) - this recipe is not in your suggestions.</string>
+    <string name="toast_recipe_not_found">Recipe not found</string>
+
+    <!-- Settings -->
+    <string name="settings_alerts">Expiring-soon alerts</string>
+    <string name="settings_alerts_desc">Highlight items that are expired or expire within 3 days</string>
+    <string name="settings_default_unit">Default unit for new ingredients</string>
+    <string name="settings_clear">Clear all pantry items</string>
+    <string name="dialog_clear_title">Clear pantry?</string>
+    <string name="dialog_clear_message">This removes every ingredient from your pantry. Recipes are not affected.</string>
+    <string name="settings_about">Smart Pantry Manager v1.0 - %1$d recipes available. Suggestions only appear when you already have every ingredient.</string>
+
+    <string-array name="units">
+        <item>g</item>
+        <item>kg</item>
+        <item>ml</item>
+        <item>l</item>
+        <item>tsp</item>
+        <item>tbsp</item>
+        <item>cup</item>
+        <item>pcs</item>
+    </string-array>
+</resources>
