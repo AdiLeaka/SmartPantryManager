@@ -1,0 +1,47 @@
+package com.example.smartpantry.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A recipe with its required ingredients and preparation steps.
+ */
+public class Recipe {
+
+    private final long id;
+    private final String name;
+    /** Steps separated by a newline character. */
+    private final String steps;
+    private final List<RecipeIngredient> ingredients = new ArrayList<>();
+
+    public Recipe(long id, String name, String steps) {
+        this.id = id;
+        this.name = name;
+        this.steps = steps;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSteps() {
+        return steps;
+    }
+
+    /** Steps as an array, one entry per step. */
+    public String[] getStepList() {
+        return steps == null || steps.isEmpty() ? new String[0] : steps.split("\n");
+    }
+
+    public List<RecipeIngredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void addIngredient(RecipeIngredient ingredient) {
+        ingredients.add(ingredient);
+    }
+}
