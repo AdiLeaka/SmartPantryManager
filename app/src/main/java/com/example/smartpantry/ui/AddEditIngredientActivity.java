@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,10 +21,13 @@ import com.example.smartpantry.model.PantryItem;
 import com.example.smartpantry.util.ExpiryUtils;
 import com.example.smartpantry.util.Prefs;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -44,7 +48,9 @@ public class AddEditIngredientActivity extends AppCompatActivity {
 
     private TextInputLayout layoutName;
     private TextInputLayout layoutQty;
-    private TextInputEditText editName;
+    private MaterialAutoCompleteTextView editName;
+    /** Ingredient name -> unit the recipes use, shown in the name dropdown. */
+    private Map<String, String> knownIngredients;
     private TextInputEditText editQty;
     private TextInputEditText editExpiry;
     private Spinner spinnerUnit;
@@ -78,6 +84,27 @@ public class AddEditIngredientActivity extends AppCompatActivity {
         spinnerUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, units));
         spinnerUnit.setSelection(indexOfUnit(Prefs.getDefaultUnit(this)));
 
+        // Name field: pick from the list of recipe ingredients (or type your own).
+        knownIngredients = db.getKnownIngredients();
+        editName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line,
+                new ArrayList<>(knownIngredients.keySet())));
+        editName.setThreshold(0);
+        editName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editName.showDropDown();
+            }
+        });
+        editName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Choosing a listed ingredient also selects the unit the recipes use for it.
+                String picked = (String) parent.getItemAtPosition(position);
+                spinnerUnit.setSelection(indexOfUnit(knownIngredients.get(picked)));
+                editQty.requestFocus();
+            }
+        });
+
         // Intent data decides add vs edit mode.
         itemId = getIntent().getLongExtra(EXTRA_ITEM_ID, -1);
         if (itemId != -1) {
@@ -88,7 +115,7 @@ public class AddEditIngredientActivity extends AppCompatActivity {
                 return;
             }
             toolbar.setTitle(R.string.title_edit);
-            editName.setText(item.getName());
+            editName.setText(item.getName(), false);
             editQty.setText(UnitConverter.formatQuantity(item.getQuantity()));
             spinnerUnit.setSelection(indexOfUnit(item.getUnit()));
             expiryIso = item.getExpiryDate();
