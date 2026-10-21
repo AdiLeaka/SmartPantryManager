@@ -15,6 +15,7 @@ import com.example.smartpantry.R;
 import com.example.smartpantry.logic.UnitConverter;
 import com.example.smartpantry.model.PantryItem;
 import com.example.smartpantry.util.ExpiryUtils;
+import com.example.smartpantry.util.IngredientIcons;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,7 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
         final PantryItem item = items.get(position);
         Context ctx = holder.itemView.getContext();
 
+        holder.icon.setText(IngredientIcons.forName(item.getName()));
         holder.name.setText(item.getName());
         holder.qty.setText(UnitConverter.formatQuantity(item.getQuantity()) + " " + item.getUnit());
 
@@ -103,6 +105,7 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView icon;
         final TextView name;
         final TextView qty;
         final TextView expiry;
@@ -111,6 +114,7 @@ public class PantryAdapter extends RecyclerView.Adapter<PantryAdapter.ViewHolder
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
+            icon = itemView.findViewById(R.id.txtIcon);
             name = itemView.findViewById(R.id.txtName);
             qty = itemView.findViewById(R.id.txtQty);
             expiry = itemView.findViewById(R.id.txtExpiry);

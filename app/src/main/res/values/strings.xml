@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<string name="welcome_message">Waste less, cook more. Welcome to your pantry.</string>
 <resources>
+    <string name="welcome_message">Waste less, cook more. Welcome to your pantry.</string>
     <string name="app_name">Smart Pantry Manager</string>
 
     <!-- Screen titles -->

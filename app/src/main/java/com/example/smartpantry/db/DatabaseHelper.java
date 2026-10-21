@@ -11,7 +11,9 @@ import com.example.smartpantry.model.Recipe;
 import com.example.smartpantry.model.RecipeIngredient;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Local SQLite database (SQLiteOpenHelper). Holds the user's pantry and the recipe collection.
@@ -205,6 +207,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             c.close();
         }
+    }
+
+    /**
+     * Every distinct ingredient name used by the recipes, with the unit the recipes use for it
+     * (e.g. "Egg" -> "pcs"). Used to fill the dropdown on the Add Ingredient screen.
+     */
+    public Map<String, String> getKnownIngredients() {
+        Map<String, String> known = new LinkedHashMap<>();
+        Cursor c = getReadableDatabase().rawQuery(
+                "SELECT name, unit FROM " + T_ING + " GROUP BY name COLLATE NOCASE "
+                        + "ORDER BY name COLLATE NOCASE ASC", null);
+        try {
+            while (c.moveToNext()) {
+                known.put(c.getString(0), c.getString(1));
+            }
+        } finally {
+            c.close();
+        }
+        return known;
     }
 
     private void loadIngredients(SQLiteDatabase db, Recipe recipe) {

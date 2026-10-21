@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
+    app:cardBackgroundColor="#F8BBD0"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
@@ -19,6 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtIcon"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/txtName"

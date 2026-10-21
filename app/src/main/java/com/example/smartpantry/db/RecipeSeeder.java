@@ -161,6 +161,15 @@ final class RecipeSeeder {
                     new Object[][]{i("Pasta", 250, "g"), i("Tomato", 4, "pcs"), i("Cheese", 100, "g"),
                             i("Garlic", 2, "pcs"), i("Olive oil", 1, "tbsp")});
 
+            DatabaseHelper.insertRecipe(db, "Alfredo Pasta",
+                    new String[]{"Boil the pasta in salted water until al dente, then drain.",
+                            "Melt the butter in a large pan and fry the garlic for 1 minute.",
+                            "Pour in the cream and simmer gently for 3 minutes.",
+                            "Stir in the parmesan until the sauce is smooth and thick.",
+                            "Toss the pasta through the sauce, season with salt and black pepper, and serve."},
+                    new Object[][]{i("Pasta", 200, "g"), i("Butter", 30, "g"), i("Cream", 150, "ml"),
+                            i("Garlic", 2, "pcs"), i("Parmesan cheese", 50, "g"), i("Salt", 0.5, "tsp"),
+                            i("Black pepper", 0.25, "tsp")});
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
