@@ -39,7 +39,7 @@
         android:paddingBottom="4dp"
         android:text="@string/welcome_message"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@id/txtBanner"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/txtBanner"
+        app:layout_constraintTop_toBottomOf="@id/txtWelcome"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -66,7 +66,7 @@
         android:textColor="@color/text_secondary"
         android:textSize="16sp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/txtBanner"
+        app:layout_constraintTop_toBottomOf="@id/txtWelcome"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
